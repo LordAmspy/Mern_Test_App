@@ -1,13 +1,28 @@
-/**
- * routes/userRoutes.js
- */
 
 const express = require("express");
 const router = express.Router();
 
-const { getUsers, createUser } = require("../controllers/userController");
+const {
+    getUsers,
+    getUserById,
+    createUser,
+    updateUser,
+    deleteUser
+} = require("../controllers/userController");
 
-router.get("/", getUsers);
-router.post("/", createUser);
+/**
+ * GET + POST Routes
+ */
+router.route("/")
+    .get(getUsers)
+    .post(createUser);
+
+/**
+ * GET by ID + UPDATE + DELETE
+ */
+router.route("/:id")
+    .get(getUserById)
+    .put(updateUser)
+    .delete(deleteUser);
 
 module.exports = router;

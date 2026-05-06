@@ -1,39 +1,39 @@
-/**
- * server.js
- * Entry point of backend (Day 1–4 integrated)
- * - Express setup
- * - Middleware
- * - MongoDB connection
- * - Routes
- */
 
 const express = require("express");
 const cors = require("cors");
-require("dotenv").config(); // Load env variables
+require("dotenv").config();
 
 const connectDB = require("./config/db");
+const userRoutes = require("./routes/userRoutes");
+const errorHandler = require("./middleware/errorMiddleware");
 
 const app = express();
 
-// ===== Connect Database =====
+// Connect MongoDB
 connectDB();
 
-// ===== Middleware =====
+// Middleware
 app.use(cors());
-app.use(express.json()); // Required to read JSON body
 
-// ===== Test Route =====
+/**
+ * express.json()
+ * Converts incoming JSON request body into JS object.
+ */
+app.use(express.json());
+
+// Health Route
 app.get("/", (req, res) => {
-    res.send("Backend is running 🚀");
+    res.send("Backend running successfully 🚀");
 });
 
-// ===== Routes =====
-const userRoutes = require("./routes/userRoutes");
+// User Routes
 app.use("/api/users", userRoutes);
 
-// ===== Server =====
+// Error Middleware
+app.use(errorHandler);
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });

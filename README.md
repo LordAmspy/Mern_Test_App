@@ -1,29 +1,30 @@
-# MERN Backend (Day 1–4)
 
-## Features
-- Express server
-- Routes & Controllers
-- Async/Await (Day 3)
-- MongoDB with Mongoose (Day 4)
+# MERN Backend Day 1-7
 
-## Setup
+## Covered Topics
+- Express Server
+- REST APIs
+- CRUD Operations
+- MongoDB + Mongoose
+- Models & Controllers
+- Middleware
+- Environment Variables
+- Centralized Error Handling
 
-1. Install dependencies:
+## Run Project
+
 npm install
-
-2. Add .env file:
-MONGO_URI=your_connection_string
-
-3. Run:
 npm run dev
 
-## APIs
+## Create .env
+
+PORT=5000
+MONGO_URI=your_connection_string
+
+## API Endpoints
 
 GET /api/users
+GET /api/users/:id
 POST /api/users
-
-Body:
-{
-  "name": "Test",
-  "email": "test@gmail.com"
-}
+PUT /api/users/:id
+DELETE /api/users/:id
