@@ -4,32 +4,46 @@ const cors = require("cors");
 require("dotenv").config();
 
 const connectDB = require("./config/db");
+
 const userRoutes = require("./routes/userRoutes");
+const authRoutes = require("./routes/authRoutes");
+
 const errorHandler = require("./middleware/errorMiddleware");
 
 const app = express();
 
-// Connect MongoDB
+/**
+ * Connect MongoDB
+ */
 connectDB();
 
-// Middleware
+/**
+ * Middleware
+ */
 app.use(cors());
 
 /**
  * express.json()
- * Converts incoming JSON request body into JS object.
+ * Converts incoming JSON into JS object.
  */
 app.use(express.json());
 
-// Health Route
+/**
+ * Test Route
+ */
 app.get("/", (req, res) => {
-    res.send("Backend running successfully 🚀");
+    res.send("Backend Running 🚀");
 });
 
-// User Routes
+/**
+ * Routes
+ */
 app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
-// Error Middleware
+/**
+ * Error Middleware
+ */
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;

@@ -5,24 +5,37 @@ const router = express.Router();
 const {
     getUsers,
     getUserById,
-    createUser,
     updateUser,
     deleteUser
 } = require("../controllers/userController");
 
-/**
- * GET + POST Routes
- */
-router.route("/")
-    .get(getUsers)
-    .post(createUser);
+const {
+    protect,
+    authorizeRoles
+} = require("../middleware/authMiddleware");
 
 /**
- * GET by ID + UPDATE + DELETE
+ * Protected Route
+ */
+router.get("/", protect, getUsers);
+
+/**
+ * User Routes
  */
 router.route("/:id")
-    .get(getUserById)
-    .put(updateUser)
-    .delete(deleteUser);
+
+    .get(protect, getUserById)
+
+    .put(
+        protect,
+        authorizeRoles("admin"),
+        updateUser
+    )
+
+    .delete(
+        protect,
+        authorizeRoles("admin"),
+        deleteUser
+    );
 
 module.exports = router;

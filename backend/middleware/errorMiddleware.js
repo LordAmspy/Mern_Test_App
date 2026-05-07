@@ -1,7 +1,6 @@
 
 /**
  * Centralized Error Middleware
- * Handles all backend errors in one place.
  */
 
 const errorHandler = (err, req, res, next) => {

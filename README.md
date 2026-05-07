@@ -1,15 +1,16 @@
 
-# MERN Backend Day 1-7
+# MERN Backend Day 1-9
 
-## Covered Topics
+## Topics Covered
+
 - Express Server
-- REST APIs
-- CRUD Operations
 - MongoDB + Mongoose
-- Models & Controllers
+- CRUD APIs
 - Middleware
-- Environment Variables
-- Centralized Error Handling
+- JWT Authentication
+- Password Hashing
+- Protected Routes
+- Role-Based Access Control
 
 ## Run Project
 
@@ -20,11 +21,15 @@ npm run dev
 
 PORT=5000
 MONGO_URI=your_connection_string
+JWT_SECRET=your_secret_key
 
-## API Endpoints
+## Authentication Routes
+
+POST /api/auth/register
+POST /api/auth/login
+
+## Protected Routes
 
 GET /api/users
-GET /api/users/:id
-POST /api/users
 PUT /api/users/:id
 DELETE /api/users/:id

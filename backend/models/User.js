@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 
 /**
  * User Schema
- * Blueprint of User collection.
  */
 
 const userSchema = new mongoose.Schema({
@@ -22,6 +21,12 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+
+    role: {
+        type: String,
+        enum: ["admin", "user"],
+        default: "user"
     }
 
 }, {
