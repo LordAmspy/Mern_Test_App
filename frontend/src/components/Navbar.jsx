@@ -1,25 +1,21 @@
 
 import { Link } from "react-router-dom";
 
-/**
- * Link:
- * Navigates without full page reload.
- */
-
 function Navbar() {
 
-    return (
+  return (
+    <nav className="bg-black text-white p-4 flex gap-6">
 
-        <nav className="bg-black text-white p-4 flex gap-6">
+      <Link to="/">Home</Link>
 
-            <Link to="/">Home</Link>
+      <Link to="/login">Login</Link>
 
-            <Link to="/login">Login</Link>
+      <Link to="/register">Register</Link>
 
-            <Link to="/register">Register</Link>
+      <Link to="/dashboard">Dashboard</Link>
 
-        </nav>
-    );
+    </nav>
+  );
 }
 
 export default Navbar;

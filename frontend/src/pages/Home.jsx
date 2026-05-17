@@ -1,16 +1,19 @@
 
 function Home() {
 
-    return (
+  return (
+    <div>
 
-        <div>
+      <h1 className="text-4xl font-bold text-blue-600">
+        MERN App 🚀
+      </h1>
 
-            <h1 className="text-4xl font-bold text-blue-600">
-                Home Page 🚀
-            </h1>
+      <p className="mt-4">
+        Frontend Running Successfully
+      </p>
 
-        </div>
-    );
+    </div>
+  );
 }
 
 export default Home;
